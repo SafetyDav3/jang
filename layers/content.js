@@ -1,9 +1,9 @@
 module.exports = {
   metadataTemplate: (tokenId, attributes) => ({
     image: "<%IMAGE_URL%>",
-    name: `NFT #${tokenId}`,
-    external_url: "https://www.kie.codes/",
-    description: "Please subscribe!",
+    name: `Funcoin #${tokenId}`,
+    external_url: "https://fun-hangout.sellfy.store/",
+    description: "Funhub Coin Tokens",
     attributes: attributes,
   }),
   layers: [

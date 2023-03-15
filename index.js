@@ -96,4 +96,4 @@ function saveBase64Image(base64PngImage, filename) {
   fs.writeFileSync(filename, imageBuffer);
 }
 
-generateNFTs(20, layersPath, outputPath);
+generateNFTs(10, layersPath, outputPath);
