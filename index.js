@@ -11,6 +11,12 @@ async function generateNFTs(num, layersPath, outputPath) {
   const content = require(layersPath + "/content");
   let generated = new Set();
 
+  // Create the subdirectories for images and metadata
+  const imagesDir = path.join(outputPath, "images");
+  fs.mkdirSync(imagesDir, { recursive: true });
+  const metadataDir = path.join(outputPath, "metadata");
+  fs.mkdirSync(metadataDir, { recursive: true });
+
   for (let tokenId = 0; tokenId < num; tokenId++) {
     console.log(`Generating NFT #${tokenId} …`);
     let selection = randomlySelectLayers(layersPath, content.layers);
@@ -22,20 +28,16 @@ async function generateNFTs(num, layersPath, outputPath) {
       continue;
     } else {
       generated.add(traitsStr);
-      await mergeLayersAndSave(
-        selection.images,
-        path.join(outputPath, `${tokenId}.png`)
-      );
+      const imageFile = path.join(imagesDir, `${tokenId}.png`);
+      await mergeLayersAndSave(selection.images, imageFile);
 
       let metadata = generateMetadata(
         content,
         tokenId,
         selection.selectedTraits
       );
-      fs.writeFileSync(
-        path.join(outputPath, `${tokenId}`),
-        JSON.stringify(metadata)
-      );
+      const metadataFile = path.join(metadataDir, `${tokenId}.json`);
+      fs.writeFileSync(metadataFile, JSON.stringify(metadata));
     }
   }
 }
@@ -95,5 +97,5 @@ function saveBase64Image(base64PngImage, filename) {
   let imageBuffer = Buffer.from(base64, "base64");
   fs.writeFileSync(filename, imageBuffer);
 }
-
+// 252 is the number of NFTs to generate
 generateNFTs(10, layersPath, outputPath);

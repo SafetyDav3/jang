@@ -1,15 +1,14 @@
 const fs = require("fs");
-// TODO: ↓↓↓ correct path name
-const path = __dirname + "/metadata";
+const path = __dirname + "/output";
 const buildDescription = (oldValue, id) => "Example desc... using ID#" + id;
 const buildName = (oldVale, id) => "Name #" + id;
-const buildImageURI = (oldValue, id) => "ipfs://__CID__" + id + ".png";
+const buildImgUrl = (oldValue, id) => "ipfs://__CID__" + id + ".png";
 
 const getTokenId = (fileName) => {
   return fileName.match(/(0-9)+\.json/)[1];
 };
 
-fs.readFileSync(path).forEach((fileName) => {
+fs.readdirSync(path).forEach((fileName) => {
   const filePath = path + "/" + fileName;
   const stat = fs.statSync(filePath);
 
@@ -17,7 +16,7 @@ fs.readFileSync(path).forEach((fileName) => {
     return;
   }
 
-  if (fileName.endWith(".json")) {
+  if (fileName.endsWith(".json")) {
     const jsonContent = require(filePath);
     const tokenId = getTokenId(fileName);
 
