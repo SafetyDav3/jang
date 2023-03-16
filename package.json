@@ -13,5 +13,8 @@
     "merge-images": "^2.0.0",
     "node-canvas": "^2.7.0",
     "random-js": "^2.1.0"
+  },
+  "devDependencies": {
+    "prettier": "^2.8.4"
   }
 }

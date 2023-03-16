@@ -17,13 +17,14 @@ async function generateNFTs(num, layersPath, outputPath) {
   const metadataDir = path.join(outputPath, "metadata");
   fs.mkdirSync(metadataDir, { recursive: true });
 
+  console.log("\nGenerating NFTs and metadata...\n");
   for (let tokenId = 0; tokenId < num; tokenId++) {
-    console.log(`Generating NFT #${tokenId} …`);
+    console.log(`Generating NFT #${tokenId} ...`);
     let selection = randomlySelectLayers(layersPath, content.layers);
     const traitsStr = JSON.stringify(selection.selectedTraits);
 
     if (generated.has(traitsStr)) {
-      console.log("Duplicate detected. Retry …");
+      console.log("Duplicate detected. Retry ...");
       tokenId--;
       continue;
     } else {
@@ -40,6 +41,10 @@ async function generateNFTs(num, layersPath, outputPath) {
       fs.writeFileSync(metadataFile, JSON.stringify(metadata));
     }
   }
+
+  console.log(
+    `\nCongratulations!\nYou have successfully generated ${num} NFTs!`
+  );
 }
 
 function generateMetadata(content, tokenId, traits) {
@@ -97,5 +102,6 @@ function saveBase64Image(base64PngImage, filename) {
   let imageBuffer = Buffer.from(base64, "base64");
   fs.writeFileSync(filename, imageBuffer);
 }
-// 252 is the number of NFTs to generate
+
+// 10 is the number of NFTs to generate
 generateNFTs(10, layersPath, outputPath);
