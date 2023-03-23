@@ -1,9 +1,12 @@
 const fs = require("fs");
 const path = __dirname + "/output/metadata";
-const buildDescription = (oldValue, id) =>
-  "Example desc... change using ID#" + id;
+
+const CID = "testNUM54s54f65f4s4v558d4v58d4v84dv/"; // CID of the metadata folder
+const buildImgUrl = (oldValue, id) => "ipfs://" + CID + id + ".png";
 const buildName = (oldVale, id) => "Name #" + id;
-const buildImgUrl = (oldValue, id) => "ipfs://__CID__" + id + ".png";
+
+const buildDescription = (oldValue, id) =>
+  "NFT Image associated with file #" + id;
 
 const getTokenId = (fileName) => {
   const matches = fileName.match(/(\d+)\.json/);
