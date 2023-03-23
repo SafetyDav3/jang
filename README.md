@@ -13,11 +13,11 @@ This is a JavaScript program that generates NFTs (Non-Fungible Tokens) by combin
 * random-js for random number generation.<br>
 <br>
 # Run program
-After the layers are in there own folders run `node index.js`
+After the layers are in there own folders run <mark>node index.js</mark>
 <br>
-This will create a series of images from the layers in a `".png"` format and place them in the `"output/images"` folder. At the same time the associated metadata will be placed in the `"output/metadata"` folder.
+This will create a series of images from the layers in a <mark>.png</mark> format and place them in the <mark>output/images</mark> folder. At the same time the associated metadata will be placed in the <mark>output/metadata</mark> folder.
 <br> 
 <br> 
-Next you create a collection at an IPFS service and collect the `"http://ipfs..."` style address and CID. You then put this information into the "update.js" file and run it with `"node update.js"`.
+Next you create a collection at an IPFS service and collect the <mark>http://ipfs...</mark> style address and CID. You then put this information into the <mark>update.js</mark> file and run it with <mark>node update.js</mark>.
 <br> 
 This will then change the metadata sequentially according to the file name.
