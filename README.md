@@ -13,7 +13,7 @@ This is a JavaScript program that generates NFTs (Non-Fungible Tokens) by combin
 * random-js for random number generation.<br>
 <br>
 # Run program
-After the layers are in there own folders run `"node index.js"`
+After the layers are in there own folders run `node index.js`
 <br>
 This will create a series of images from the layers in a `".png"` format and place them in the `"output/images"` folder. At the same time the associated metadata will be placed in the `"output/metadata"` folder.
 <br> 
